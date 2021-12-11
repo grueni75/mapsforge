@@ -21,6 +21,8 @@ import org.mapsforge.core.model.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A MapDatabase that reads and combines data from multiple map files.
@@ -36,6 +38,7 @@ import java.util.List;
  * all objects have to be compared with all others.
  */
 public class MultiMapDataStore extends MapDataStore {
+    private static final Logger LOGGER = Logger.getLogger(MultiMapDataStore.class.getName());
 
     public enum DataPolicy {
         RETURN_FIRST, // return the first set of data
@@ -52,6 +55,7 @@ public class MultiMapDataStore extends MapDataStore {
     public MultiMapDataStore(DataPolicy dataPolicy) {
         this.dataPolicy = dataPolicy;
         this.mapDatabases = new ArrayList<>();
+        LOGGER.setLevel(Level.INFO);
     }
 
     /**
@@ -163,7 +167,7 @@ public class MultiMapDataStore extends MapDataStore {
         switch (this.dataPolicy) {
             case RETURN_FIRST:
                 for (MapDataStore mdb : mapDatabases) {
-                    if (mdb.supportsTile(upperLeft)) {
+                    if (supportsTile(upperLeft, lowerRight)) {
                         return mdb.readLabels(upperLeft, lowerRight);
                     }
                 }
@@ -180,7 +184,7 @@ public class MultiMapDataStore extends MapDataStore {
     private MapReadResult readLabels(Tile upperLeft, Tile lowerRight, boolean deduplicate) {
         MapReadResult mapReadResult = new MapReadResult();
         for (MapDataStore mdb : mapDatabases) {
-            if (mdb.supportsTile(upperLeft)) {
+            if (supportsTile(upperLeft, lowerRight)) {
                 MapReadResult result = mdb.readLabels(upperLeft, lowerRight);
                 if (result == null) {
                     continue;
@@ -232,7 +236,7 @@ public class MultiMapDataStore extends MapDataStore {
         switch (this.dataPolicy) {
             case RETURN_FIRST:
                 for (MapDataStore mdb : mapDatabases) {
-                    if (mdb.supportsTile(upperLeft)) {
+                    if (supportsTile(upperLeft, lowerRight)) {
                         return mdb.readMapData(upperLeft, lowerRight);
                     }
                 }
@@ -248,7 +252,7 @@ public class MultiMapDataStore extends MapDataStore {
     private MapReadResult readMapData(Tile upperLeft, Tile lowerRight, boolean deduplicate) {
         MapReadResult mapReadResult = new MapReadResult();
         for (MapDataStore mdb : mapDatabases) {
-            if (mdb.supportsTile(upperLeft)) {
+            if (supportsTile(upperLeft, lowerRight)) {
                 MapReadResult result = mdb.readMapData(upperLeft, lowerRight);
                 if (result == null) {
                     continue;
@@ -256,6 +260,8 @@ public class MultiMapDataStore extends MapDataStore {
                 boolean isWater = mapReadResult.isWater & result.isWater;
                 mapReadResult.isWater = isWater;
                 mapReadResult.add(result, deduplicate);
+            } else {
+                LOGGER.log(Level.INFO,"tile not supported");
             }
         }
         return mapReadResult;
@@ -301,7 +307,7 @@ public class MultiMapDataStore extends MapDataStore {
         switch (this.dataPolicy) {
             case RETURN_FIRST:
                 for (MapDataStore mdb : mapDatabases) {
-                    if (mdb.supportsTile(upperLeft)) {
+                    if (supportsTile(upperLeft, lowerRight)) {
                         return mdb.readPoiData(upperLeft, lowerRight);
                     }
                 }
@@ -318,7 +324,7 @@ public class MultiMapDataStore extends MapDataStore {
     private MapReadResult readPoiData(Tile upperLeft, Tile lowerRight, boolean deduplicate) {
         MapReadResult mapReadResult = new MapReadResult();
         for (MapDataStore mdb : mapDatabases) {
-            if (mdb.supportsTile(upperLeft)) {
+            if (supportsTile(upperLeft, lowerRight)) {
                 MapReadResult result = mdb.readPoiData(upperLeft, lowerRight);
                 if (result == null) {
                     continue;
@@ -364,4 +370,15 @@ public class MultiMapDataStore extends MapDataStore {
         }
         return false;
     }
+    public boolean supportsTile(Tile upperLeft, Tile lowerRight) {
+        for (int x = upperLeft.tileX; x <= lowerRight.tileX; x++) {
+            for (int y = upperLeft.tileY; y <= lowerRight.tileY; y++) {
+                Tile current = new Tile(x, y, upperLeft.zoomLevel, upperLeft.tileSize);
+                if (supportsTile(current))
+                    return true;
+            }
+        }
+        return false;
+    }
+
 }

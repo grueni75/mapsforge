@@ -35,6 +35,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -64,6 +65,7 @@ public class DirectRenderer extends StandardRenderer {
         this.renderLabels = renderLabels;
         this.tileDependencies = new TileDependencies();
         this.tileRefreshers = new ArrayList<>();
+        LOGGER.setLevel(Level.INFO);
     }
 
     public void addTileRefresher(TileRefresher tileRefresher) {
@@ -84,7 +86,9 @@ public class DirectRenderer extends StandardRenderer {
                 TileBitmap bitmap = null;
 
                 if (this.mapDataStore != null) {
-                    MapReadResult mapReadResult = this.mapDataStore.readMapData(rendererJob.tile);
+                    // Ensure that the elements at the borders (e.g., circles) are also considered
+                    MapReadResult mapReadResult = this.mapDataStore.readMapData(rendererJob.tile.getAboveLeft(),rendererJob.tile.getBelowRight());
+                    //MapReadResult mapReadResult = this.mapDataStore.readMapData(rendererJob.tile);
                     processReadMapData(renderContext, mapReadResult);
                 }
 
@@ -100,7 +104,11 @@ public class DirectRenderer extends StandardRenderer {
                 }
 
                 if (this.renderLabels) {
-                    Set<MapElementContainer> labelsToDraw = processLabels(renderContext);
+                    //Set<MapElementContainer> labelsToDraw = processLabels(renderContext);
+                    Set<MapElementContainer> labelsToDraw = new HashSet<>();
+                    List<MapElementContainer> currentElementsOrdered = LayerUtil.collisionFreeOrdered(renderContext.labels);
+                    labelsToDraw.addAll(currentElementsOrdered);
+
                     // now draw the ways and the labels
                     renderContext.canvasRasterer.drawMapElements(labelsToDraw, rendererJob.tile);
                 }
@@ -131,6 +139,7 @@ public class DirectRenderer extends StandardRenderer {
 
     private Set<MapElementContainer> processLabels(RenderContext renderContext) {
         synchronized (tileDependencies) {
+
             // if we are drawing the labels per tile, we need to establish which tile-overlapping
             // elements need to be drawn.
             Set<MapElementContainer> labelsToDraw = new HashSet<>();
