@@ -1,5 +1,4 @@
 [![Maven Central](https://img.shields.io/maven-central/v/org.mapsforge/mapsforge-core.svg)](https://search.maven.org/search?q=g:org.mapsforge)
-[![Build Status](https://travis-ci.org/mapsforge/mapsforge.svg?branch=master)](https://travis-ci.org/mapsforge/mapsforge)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
 
 # Mapsforge
@@ -8,7 +7,7 @@
 
 See the **[integration guide](docs/Integration.md)** and [changelog](docs/Changelog.md). And read through [how to contribute](docs/CONTRIBUTING.md) guidelines.
 
-If you have any questions or problems, don't hesitate to ask our public [forum](https://groups.google.com/group/mapsforge-dev) for help.
+If you have any questions or problems, don't hesitate to ask the Discussions for help.
 
 - Mapsforge project uses a [compact file format](docs/Specification-Binary-Map-File.md) for fast ad-hoc rendering of OpenStreetMap data.
 - We provide tools to [compile your own maps](docs/Getting-Started-Map-Writer.md) with detailed [instructions](docs/MapCreation.md) and also [precompiled maps](https://download.mapsforge.org/).

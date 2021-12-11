@@ -4,8 +4,6 @@ The Mapsforge Map-Writer is a plug-in for the OpenStreetMap Osmosis Tool to conv
 
 This documentation is intended for those who want to create map files for use with mapsforge.
 
-If you have any questions or problems, don't hesitate to ask our public [forum](https://groups.google.com/group/mapsforge-dev) for help.
-
 ## Introduction
 
 This document describes the mapsforge map-writer plugin. It allows to convert OpenStreetMap data into the .map format which is needed to display maps with mapsforge-based applications. The tool is implemented as a plugin to the [Osmosis](http://wiki.openstreetmap.org/wiki/Osmosis) software. To use the tool, you are required to have a working installation of Osmosis and the writer plugin copied to the plugins directory of Osmosis. You should also be familiar with the Osmosis tool.
@@ -59,7 +57,7 @@ The mapsforge writer has not changed significantly from version 0.3 and files ge
 
 - The plugin requires a bounding box definition, which is either included in the data or is given via the command line parameter `bbox`. Take note that the XML export functionality of the OSM website currently produces invalid bounding box definitions, so that the `bbox` parameter must be used in this case.
 - If you installed the plugin into the user home, please make sure that you run osmosis with exactly this user and not with another user (e.g. the root user).
-- There is a potential issue with tile grid artifacts inside areas at zoom levels 12-13, specially if they have stroke or semi-transparent fill. To solve this you can try a different zoom interval:
+- There is a potential issue with tile grid artifacts inside areas at zoom levels 12-13, specially if they have stroke or semi-transparent fill. To solve this you can try adding `force-polygon-line="true"` in the tag-mapping or a different zoom interval:
 ```bash
 zoom-interval-conf=5,0,7,10,8,11,12,12,13,14,14,21
 ```

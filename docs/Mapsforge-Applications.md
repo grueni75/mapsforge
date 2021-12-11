@@ -16,7 +16,7 @@
 | [Bladenight App](https://play.google.com/store/apps/details?id=fr.ocroquette.bladenight) | Tracking for inline skating events | Proprietary/Free | Closed |
 | [Calimoto](https://play.google.com/store/apps/details?id=com.calimoto.calimoto) | Motorrad navigation | Proprietary/Free (in-app purchases) | Closed |
 | [Cartograph 2 Maps](https://www.cartograph.eu/) | Map viewer and tracking | Proprietary/Commercial | Closed |
-| [Cruiser](http://wiki.openstreetmap.org/wiki/Cruiser) | Android / Desktop map and navigation application | Proprietary/Free | Closed |
+| [Cruiser](https://wiki.openstreetmap.org/wiki/Cruiser) | Map and navigation platform for Android and Desktop | Proprietary/Free | Closed |
 | [c:geo](https://github.com/cgeo/) | Geocaching | Apache 2.0/Free | Open |
 | [DogSheep](https://play.google.com/store/apps/details?id=com.dogsheep) | Customized maps and tours | Proprietary/Free | Closed |
 | [ELEMNT](http://eu.wahoofitness.com/devices/gps-bike-computer-elemnt.html) | GPS bike computer | Proprietary/Commercial | Closed |
@@ -32,6 +32,7 @@
 | [Mapet](http://nspace.hu/mapet/) | Hiking navigation | Proprietary/Free | Closed |
 | [mappa](http://mynativeguide.com/) | Tourist Map | Proprietary/Commercial | Closed |
 | [Mapsforge Tile Server](https://github.com/develar/mapsforge-tile-server) | Tile Server | MIT/Free | Open |
+| [Mapsforge Tile Server](https://github.com/telemaxx/mapsforgesrv) | Tile Server | GPL3+/Free | Open |
 | [Mapsforge-Web](https://github.com/virus-warnning/mapsforge-web) | Tile Server for Taiwan | MIT/Free | Open |
 | [MapTag](http://www.rockethub.com/projects/9335-maptag) | Offline Location Sharing | Proprietary/Commercial | Closed |
 | [Mobile Atlas Creator](http://mobac.sourceforge.net/) | Creation of offline atlases | GPL/Free | Open |
@@ -62,5 +63,3 @@
 | [Visitor](https://play.google.com/store/apps/details?id=org.treefish.visitor) ([Demo](https://play.google.com/store/apps/details?id=org.treefish.visitor.demo)) | Save places and share them with others | Proprietary/Free and Commercial | Closed |
 | [Watertrack ECO](http://watertrack.de/) | GPS Tracking on Germany Waterways | Proprietary/Free | Closed |
 | [Wikiloc](http://www.wikiloc.com/outdoor-navigation-app) | Map Viewer & Track recording/following | Proprietary/Free (in-app purchases) | Closed |
-
-You know an application that is missing here? Please inform us by sending a message via our public [forum](https://groups.google.com/group/mapsforge-dev).
