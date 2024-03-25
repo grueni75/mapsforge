@@ -49,8 +49,9 @@ public class PathText extends RenderInstruction {
     private boolean repeat;
     private float repeatGap;
     private float repeatStart;
-    private boolean rotate;
     private TextKey textKey;
+    private TextTransform textTransform;
+    private TextOrientation textOrientation;
 
     public PathText(GraphicFactory graphicFactory, DisplayModel displayModel, String elementName,
                     XmlPullParser pullParser) throws XmlPullParserException {
@@ -60,7 +61,6 @@ public class PathText extends RenderInstruction {
         this.fill.setStyle(Style.FILL);
         this.fill.setTextAlign(Align.CENTER);
         this.fills = new HashMap<>();
-        this.rotate = true;
         this.repeat = true;
 
         this.stroke = graphicFactory.createPaint();
@@ -70,6 +70,8 @@ public class PathText extends RenderInstruction {
         this.strokes = new HashMap<>();
         this.dyScaled = new HashMap<>();
         this.display = Display.IFSPACE;
+        this.textTransform = TextTransform.NONE;
+        this.textOrientation = TextOrientation.AUTO;
 
         extractValues(graphicFactory, displayModel, elementName, pullParser);
     }
@@ -79,6 +81,7 @@ public class PathText extends RenderInstruction {
         // no-op
     }
 
+    @SuppressWarnings("deprecation")
     private void extractValues(GraphicFactory graphicFactory, DisplayModel displayModel, String elementName,
                                XmlPullParser pullParser) throws XmlPullParserException {
         this.repeatGap = REPEAT_GAP_DEFAULT * displayModel.getScaleFactor();
@@ -113,18 +116,24 @@ public class PathText extends RenderInstruction {
                 this.repeatGap = Float.parseFloat(value) * displayModel.getScaleFactor();
             } else if (REPEAT_START.equals(name)) {
                 this.repeatStart = Float.parseFloat(value) * displayModel.getScaleFactor();
-            } else if (ROTATE.equals(name)) {
-                this.rotate = Boolean.parseBoolean(value);
             } else if (PRIORITY.equals(name)) {
                 this.priority = Integer.parseInt(value);
+            } else if (ROTATE.equals(name)) {
+                if (!Boolean.parseBoolean(value)) {
+                    this.textOrientation = TextOrientation.RIGHT;
+                }
             } else if (SCALE.equals(name)) {
                 this.scale = scaleFromValue(value);
             } else if (STROKE.equals(name)) {
                 this.stroke.setColor(XmlUtils.getColor(graphicFactory, value, displayModel.getThemeCallback(), this));
             } else if (STROKE_WIDTH.equals(name)) {
                 this.stroke.setStrokeWidth(XmlUtils.parseNonNegativeFloat(name, value) * displayModel.getScaleFactor());
+            } else if (TEXT_ORIENTATION.equals(name)) {
+                this.textOrientation = TextOrientation.fromString(value);
+            } else if (TEXT_TRANSFORM.equals(name)) {
+                this.textTransform = TextTransform.fromString(value);
             } else {
-                throw XmlUtils.createXmlPullParserException(elementName, name, value, i);
+                XmlUtils.logUnknownAttribute(elementName, name, value, i);
             }
         }
 
@@ -171,10 +180,11 @@ public class PathText extends RenderInstruction {
             dyScale = this.dy;
         }
 
-        renderCallback.renderWayText(renderContext, this.display, this.priority, caption, dyScale,
+        renderCallback.renderWayText(renderContext, this.display, this.priority,
+                transformText(caption, textTransform), dyScale,
                 getFillPaint(renderContext.rendererJob.tile.zoomLevel),
                 getStrokePaint(renderContext.rendererJob.tile.zoomLevel),
-                this.repeat, this.repeatGap, this.repeatStart, this.rotate,
+                this.repeat, this.repeatGap, this.repeatStart, this.textOrientation,
                 way);
     }
 

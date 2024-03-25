@@ -15,7 +15,6 @@
 package org.mapsforge.samples.android;
 
 import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -40,6 +39,7 @@ import java.util.Collection;
  * Long press on map to search inside visible bounding box.<br/>
  * Tap on POIs to show their name (in default locale).
  */
+@SuppressWarnings("deprecation")
 public class PoiSearchViewer extends DefaultTheme {
 
     private static final String POI_FILE = "berlin.poi";
@@ -72,7 +72,7 @@ public class PoiSearchViewer extends DefaultTheme {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        persistenceManager = AndroidPoiPersistenceManagerFactory.getPoiPersistenceManager(new File(getExternalFilesDir(null), POI_FILE).getAbsolutePath());
+        persistenceManager = AndroidPoiPersistenceManagerFactory.getPoiPersistenceManager(new File(getExternalMediaDirs()[0], POI_FILE).getAbsolutePath());
     }
 
     @Override
@@ -82,7 +82,7 @@ public class PoiSearchViewer extends DefaultTheme {
         super.onDestroy();
     }
 
-    private class PoiSearchTask extends AsyncTask<BoundingBox, Void, Collection<PointOfInterest>> {
+    private class PoiSearchTask extends android.os.AsyncTask<BoundingBox, Void, Collection<PointOfInterest>> {
         private final WeakReference<PoiSearchViewer> weakActivity;
         private final String category;
 
@@ -98,7 +98,7 @@ public class PoiSearchViewer extends DefaultTheme {
                 PoiCategoryManager categoryManager = persistenceManager.getCategoryManager();
                 PoiCategoryFilter categoryFilter = new ExactMatchPoiCategoryFilter();
                 categoryFilter.addCategory(categoryManager.getPoiCategoryByTitle(category));
-                return persistenceManager.findInRect(params[0], categoryFilter, null, Integer.MAX_VALUE);
+                return persistenceManager.findInRect(params[0], categoryFilter, null, null, Integer.MAX_VALUE, true);
             } catch (Throwable t) {
                 Log.e(SamplesApplication.TAG, t.getMessage(), t);
             }

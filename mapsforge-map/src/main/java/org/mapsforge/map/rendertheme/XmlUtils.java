@@ -62,7 +62,7 @@ public final class XmlUtils {
             // we also need to include the resourceProvider as different providers may give different input streams for same source
             StringBuilder sb = new StringBuilder().append(absoluteName).append(width).append(height).append(percent);
             if (resourceProvider != null)
-                sb.append(resourceProvider.hashCode());
+                sb.append(resourceProvider.getClass().getName());
             int hash = sb.toString().hashCode();
             if (src.toLowerCase(Locale.ENGLISH).endsWith(".svg")) {
                 try {
@@ -81,18 +81,18 @@ public final class XmlUtils {
         }
     }
 
-    public static XmlPullParserException createXmlPullParserException(String element, String name, String value, int attributeIndex) {
+    public static void logUnknownAttribute(String element, String name, String value, int attributeIndex) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("unknown attribute (");
-        stringBuilder.append(attributeIndex);
-        stringBuilder.append(") in element '");
+        stringBuilder.append("unknown attribute in element ");
         stringBuilder.append(element);
-        stringBuilder.append("': ");
+        stringBuilder.append(" ");
+        stringBuilder.append(attributeIndex);
+        stringBuilder.append(" : ");
         stringBuilder.append(name);
-        stringBuilder.append('=');
+        stringBuilder.append(" = ");
         stringBuilder.append(value);
 
-        return new XmlPullParserException(stringBuilder.toString());
+        LOGGER.warning(stringBuilder.toString());
     }
 
     /**

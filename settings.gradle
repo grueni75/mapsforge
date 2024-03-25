@@ -1,3 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 include ':mapsforge-core'
 include ':mapsforge-map'
 include ':mapsforge-map-android'
@@ -11,4 +25,3 @@ include ':mapsforge-poi-writer'
 include ':mapsforge-samples-android'
 include ':mapsforge-samples-awt'
 include ':mapsforge-themes'
-include ':sqlite-android'

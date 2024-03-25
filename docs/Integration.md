@@ -2,7 +2,7 @@
 
 This article describes how to integrate the library in your project, with Gradle / Maven / Jars or SNAPSHOT builds.
 
-Current version is [![Maven Central](https://img.shields.io/maven-central/v/org.mapsforge/mapsforge-core.svg)](https://search.maven.org/search?q=g:org.mapsforge)
+Current version is [![Maven Central](https://img.shields.io/maven-central/v/org.mapsforge/mapsforge-core.svg)](https://repo1.maven.org/maven2/org/mapsforge/)
 
 ## Gradle
 
@@ -14,7 +14,6 @@ implementation 'org.mapsforge:mapsforge-core:[CURRENT-VERSION]'
 implementation 'org.mapsforge:mapsforge-map:[CURRENT-VERSION]'
 implementation 'org.mapsforge:mapsforge-map-reader:[CURRENT-VERSION]'
 implementation 'org.mapsforge:mapsforge-themes:[CURRENT-VERSION]'
-implementation 'net.sf.kxml:kxml2:2.3.0'
 ```
 
 #### Android
@@ -26,7 +25,8 @@ implementation 'com.caverock:androidsvg:1.4'
 #### Desktop
 ```groovy
 implementation 'org.mapsforge:mapsforge-map-awt:[CURRENT-VERSION]'
-implementation 'com.formdev:svgSalamander:1.1.2.4'
+implementation 'guru.nidi.com.kitfox:svgSalamander:1.1.3'
+implementation 'net.sf.kxml:kxml2:2.3.0'
 ```
 
 ### POI
@@ -40,17 +40,12 @@ implementation 'org.mapsforge:mapsforge-poi:[CURRENT-VERSION]'
 #### Android
 ```groovy
 implementation 'org.mapsforge:mapsforge-poi-android:[CURRENT-VERSION]'
-implementation 'org.mapsforge:sqlite-android:[CURRENT-VERSION]'
-implementation 'org.mapsforge:sqlite-android:[CURRENT-VERSION]:natives-armeabi-v7a'
-implementation 'org.mapsforge:sqlite-android:[CURRENT-VERSION]:natives-arm64-v8a'
-implementation 'org.mapsforge:sqlite-android:[CURRENT-VERSION]:natives-x86'
-implementation 'org.mapsforge:sqlite-android:[CURRENT-VERSION]:natives-x86_64'
 ```
 
 #### Desktop
 ```groovy
 implementation 'org.mapsforge:mapsforge-poi-awt:[CURRENT-VERSION]'
-implementation 'org.xerial:sqlite-jdbc:3.28.0'
+implementation 'org.xerial:sqlite-jdbc:3.43.0.0'
 ```
 
 ## Snapshots
@@ -91,6 +86,6 @@ The dependencies for Maven are declared in a similar way. For example:
 
 ## Jars
 
-You can find release and snapshot jars (regular and with dependencies) in [Maven Central](https://search.maven.org/search?q=g:org.mapsforge) and [Sonatype OSS Repository Hosting](https://oss.sonatype.org/content/repositories/snapshots/org/mapsforge/).
+You can find release and snapshot jars (regular and with dependencies) in [Maven Central](https://repo1.maven.org/maven2/org/mapsforge/) and [Sonatype OSS Repository Hosting](https://oss.sonatype.org/content/repositories/snapshots/org/mapsforge/).
 
 Third party jars can be found at their respective sites or in Maven Central repository.
