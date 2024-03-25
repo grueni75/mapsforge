@@ -149,24 +149,24 @@ public class StandardRenderer implements RenderCallback {
     }
 
     @Override
-    public void renderWay(final RenderContext renderContext, Paint stroke, float dy, int level, PolylineContainer way) {
-        renderContext.addToCurrentDrawingLayer(level, new ShapePaintContainer(way, stroke, dy));
+    public void renderWay(final RenderContext renderContext, Paint stroke, float dy, Curve curveStyle, int level, PolylineContainer way) {
+        renderContext.addToCurrentDrawingLayer(level, new ShapePaintContainer(way, stroke, dy, curveStyle));
     }
 
     @Override
-    public void renderWaySymbol(final RenderContext renderContext, Display display, int priority, Bitmap symbol, float dy, Rectangle boundary, boolean repeat, float repeatGap, float repeatStart, boolean rotate, PolylineContainer way) {
+    public void renderWaySymbol(final RenderContext renderContext, Display display, int priority, Bitmap symbol, float dy, Rectangle boundary, boolean repeat, float repeatGap, float repeatStart, SymbolOrientation symbolOrientation, PolylineContainer way) {
         if (renderLabels) {
             WayDecorator.renderSymbol(symbol, display, priority, dy, boundary, repeat, repeatGap,
-                    repeatStart, rotate, way.getCoordinatesAbsolute(), renderContext.labels);
+                    repeatStart, symbolOrientation, way.getCoordinatesAbsolute(), renderContext.labels);
         }
     }
 
     @Override
     public void renderWayText(final RenderContext renderContext, Display display, int priority, String textKey, float dy, Paint fill, Paint stroke,
-                              boolean repeat, float repeatGap, float repeatStart, boolean rotate, PolylineContainer way) {
+                              boolean repeat, float repeatGap, float repeatStart, TextOrientation textOrientation, PolylineContainer way) {
         if (renderLabels) {
             WayDecorator.renderText(graphicFactory, way.getUpperLeft(), way.getLowerRight(), textKey, display, priority, dy, fill, stroke,
-                    repeat, repeatGap, repeatStart, rotate, way.getCoordinatesAbsolute(), renderContext.labels);
+                    repeat, repeatGap, repeatStart, textOrientation, way.getCoordinatesAbsolute(), renderContext.labels);
         }
     }
 

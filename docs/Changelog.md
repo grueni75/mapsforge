@@ -1,8 +1,51 @@
 # Changelog
 
-## New since 0.16.0
+## New since 0.21.0
 
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
+- [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.22.0)
+
+## Version 0.21.0 (2024-03-15)
+
+- POI writer: way-filtering option [#1457](https://github.com/mapsforge/mapsforge/pull/1457)
+- Display model: line, text scale options [#1445](https://github.com/mapsforge/mapsforge/pull/1445)
+- Minor improvements and bug fixes
+- [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.21.0)
+
+## Version 0.20.0 (2023-08-15)
+
+- POI: **v3** Android without external libs [#1411](https://github.com/mapsforge/mapsforge/pull/1411)
+- Polygon layer: support holes [#1432](https://github.com/mapsforge/mapsforge/pull/1432)
+- Minor improvements and bug fixes
+- [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.20.0)
+
+## Version 0.19.0 (2023-04-26)
+
+- Fix incorrect handling of nested tags [#1366](https://github.com/mapsforge/mapsforge/pull/1366)
+- Render themes: `curve` parameter [#1371](https://github.com/mapsforge/mapsforge/pull/1371)
+- Render themes: `text-transform` parameter [#1372](https://github.com/mapsforge/mapsforge/pull/1372)
+- Render themes: `text-wrap-width` parameter [#1379](https://github.com/mapsforge/mapsforge/pull/1379)
+- Render themes: `symbol-orientation`, `text-orientation` parameters [#1393](https://github.com/mapsforge/mapsforge/pull/1393)
+- Android text wrap improvements [#1392](https://github.com/mapsforge/mapsforge/pull/1392)
+- Hillshading: Android scoped storage [#1338](https://github.com/mapsforge/mapsforge/pull/1338)
+- Performance improvements [#1367](https://github.com/mapsforge/mapsforge/pull/1367) [#1369](https://github.com/mapsforge/mapsforge/pull/1369)
+- POI: sort by distance [#1402](https://github.com/mapsforge/mapsforge/pull/1402)
+- POI writer: add all entities by default [#1382](https://github.com/mapsforge/mapsforge/pull/1382)
+- POI writer: add normalized name by default [e2eb716](https://github.com/mapsforge/mapsforge/commit/e2eb716936e32d9eced0012de79c3eb6b7577668)
+- Minor improvements and bug fixes
+- [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.19.0)
+
+## Version 0.18.0 (2022-06-18)
+
+- Multiple maps: optimize deduplicate [#1288](https://github.com/mapsforge/mapsforge/pull/1288)
+- Validate coordinates option [#1294](https://github.com/mapsforge/mapsforge/pull/1294)
+  - `Parameters.VALIDATE_COORDINATES`
+- Minor improvements and bug fixes
+- [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.18.0)
+
+## Version 0.17.0 (2022-01-03)
+
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.17.0)
 
 ## Version 0.16.0 (2021-05-27)
@@ -11,7 +54,7 @@
 - Render theme from zip archive [#1186](https://github.com/mapsforge/mapsforge/pull/1186)
 - Render themes: custom resource providers [#1186](https://github.com/mapsforge/mapsforge/pull/1186)
 - Nautical unit adapter with feet [#1188](https://github.com/mapsforge/mapsforge/pull/1188)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.16.0)
 
 ## Version 0.15.0 (2021-01-01)
@@ -27,19 +70,19 @@
   - `Parameters.SYMBOL_SCALING`
 - Layer scroll event option [#1163](https://github.com/mapsforge/mapsforge/pull/1163)
   - `Parameters.LAYER_SCROLL_EVENT`
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.15.0)
 
 ## Version 0.14.0 (2020-08-25)
 
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.14.0)
 
 ## Version 0.13.0 (2020-01-12)
 
 - Fix marker placement on Android 9+ [#1138](https://github.com/mapsforge/mapsforge/issues/1138)
 - Fix hillshading on Android 8+ [#1131](https://github.com/mapsforge/mapsforge/pull/1131)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.13.0)
 
 ## Version 0.12.0 (2019-09-17)
@@ -48,7 +91,7 @@
 - POI writer: normalize names option [#1123](https://github.com/mapsforge/mapsforge/pull/1123)
 - Layer groups implementation [#1116](https://github.com/mapsforge/mapsforge/issues/1116)
 - Android 10 compatibility [#1120](https://github.com/mapsforge/mapsforge/issues/1120)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.12.0)
 
 ## Version 0.11.0 (2019-03-25)
@@ -59,7 +102,7 @@
 - `ThemeCallback.getColor` refactor [#912](https://github.com/mapsforge/mapsforge/issues/912)
 - Parent tiles rendering quality option [#1102](https://github.com/mapsforge/mapsforge/pull/1102)
   - `Parameters.PARENT_TILES_RENDERING`
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.11.0)
 
 ## Version 0.10.0 (2018-08-28)
@@ -79,14 +122,14 @@
 - Android 9 compatibility [#1066](https://github.com/mapsforge/mapsforge/issues/1066)
 - JTS (LocationTech) [#1027](https://github.com/mapsforge/mapsforge/issues/1027)
 - SVG Salamander (JitPack) [#1078](https://github.com/mapsforge/mapsforge/issues/1078)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.10.0)
 
 ## Version 0.9.1 (2018-01-04)
 
 - Gradle fix transitive dependencies [#1009](https://github.com/mapsforge/mapsforge/issues/1009)
 - Deprecate mapsforge-map-android-extras [#1021](https://github.com/mapsforge/mapsforge/issues/1021)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.9.1)
 
 ## Version 0.9.0 (2017-12-03)
@@ -111,7 +154,7 @@
 - Writers: Osmosis 0.46 with protobuf 3 [#1002](https://github.com/mapsforge/mapsforge/issues/1002)
 - Gradle 4 / Android plugin 3 support [#1009](https://github.com/mapsforge/mapsforge/issues/1009)
 - Internal render themes various improvements [#857](https://github.com/mapsforge/mapsforge/issues/857)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.9.0)
 
 ## Version 0.8.0 (2017-03-18)
@@ -123,7 +166,7 @@
 - Desktop tile cache creation utility [#915](https://github.com/mapsforge/mapsforge/issues/915)
 - Desktop MapView custom listeners [#935](https://github.com/mapsforge/mapsforge/issues/935)
 - Map writer: multiple threads option (default 1) [#920](https://github.com/mapsforge/mapsforge/issues/920)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.8.0)
 
 ## Version 0.7.0 (2016-12-30)
@@ -152,7 +195,7 @@
 - Deprecate CI server [#877](https://github.com/mapsforge/mapsforge/issues/877)
 - Drop of `dev` branch
 - Internal render themes various improvements [#857](https://github.com/mapsforge/mapsforge/issues/857)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.7.0)
 
 ## Version 0.6.1 (2016-06-11)
@@ -179,7 +222,7 @@
 - Jar with dependencies building [#767](https://github.com/mapsforge/mapsforge/issues/767)
 - Sample applications reorganization [#724](https://github.com/mapsforge/mapsforge/issues/724)
 - Code formatting improvements [#782](https://github.com/mapsforge/mapsforge/issues/782)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.6.1)
 
 ## Version 0.6.0 (2015-11-25)
@@ -201,7 +244,7 @@
 - Android 6 / SDK 23 / Runtime permission support [#704](https://github.com/mapsforge/mapsforge/issues/704)
 - Map creation with coastlines [documentation](MapCreation.md)
 - Fix invalid number of way nodes [#645](https://github.com/mapsforge/mapsforge/issues/645)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.6.0)
 
 ## Version 0.5.2 (2015-08-23)
@@ -220,7 +263,7 @@
 - External Map Rotation example improvements [#637](https://github.com/mapsforge/mapsforge/issues/637)
 - LabelLayer improvements [#595](https://github.com/mapsforge/mapsforge/issues/595) [#639](https://github.com/mapsforge/mapsforge/issues/639) [#642](https://github.com/mapsforge/mapsforge/issues/642)
 - Simplified cleanup operation [#620](https://github.com/mapsforge/mapsforge/issues/620)
-- Many other minor improvements and bug fixes
+- Minor improvements and bug fixes
 - [Solved issues](https://github.com/mapsforge/mapsforge/issues?q=is%3Aclosed+milestone%3A0.5.2)
 
 ## Version 0.5.1 (2015-03-18)
@@ -289,7 +332,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - Introduced maven as build system for the mapsforge project.
 - Major refactoring of the package structure in the map library.
 - Moved the map-reader code to a new, Android-independent subproject.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.2.4 (2011-06-28)
 
@@ -298,7 +341,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - Support for multi-polygons in Overlay API.
 - Support for long press events in Overlay API.
 - Added metadata API for map files.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.2.3 (2011-05-12)
 
@@ -307,7 +350,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - The text size of the map renderer can be adjusted at runtime.
 - Rendering of symbols along ways, used for example on one-way roads.
 - The maximum zoom level of the MapView may now be set at runtime.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.2.2 (2011-03-22)
 
@@ -319,7 +362,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - Added a method to take a screenshot of the currently displayed map.
 - The minimum zoom level of the MapView may now be set at runtime.
 - Started to make the map tile cache on the memory card persistent.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.2.1 (2011-02-10)
 
@@ -331,7 +374,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - Added support for a couple of OpenStreetMap tags.
 - Better rendering of way names.
 - Better rendering of coastline and water areas.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.2.0 (2010-11-22)
 
@@ -340,7 +383,7 @@ For a demonstration of the capabilities refer to the Samples app.
 - Better label and symbol placement with collision avoidance.
 - The MapView now supports multi-touch and new tile download modes.
 - First release of the Osmosis plugin to generate binary map files.
-- Many other minor improvements and bug fixes.
+- Minor improvements and bug fixes.
 
 ## Version 0.1.0 (2010-06-27)
 

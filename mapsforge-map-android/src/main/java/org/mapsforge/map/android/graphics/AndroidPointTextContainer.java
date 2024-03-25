@@ -15,6 +15,9 @@
  */
 package org.mapsforge.map.android.graphics;
 
+import android.graphics.RectF;
+import android.graphics.text.LineBreaker;
+import android.os.Build;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -28,7 +31,6 @@ public class AndroidPointTextContainer extends PointTextContainer {
     private StaticLayout backLayout;
     private StaticLayout frontLayout;
 
-    @SuppressWarnings("deprecation")
     AndroidPointTextContainer(Point xy, Display display, int priority, String text, Paint paintFront, Paint paintBack,
                               SymbolContainer symbolContainer, Position position, int maxTextWidth) {
         super(xy, display, priority, text, paintFront, paintBack, symbolContainer, position, maxTextWidth);
@@ -69,10 +71,10 @@ public class AndroidPointTextContainer extends PointTextContainer {
                 backTextPaint.setTextAlign(android.graphics.Paint.Align.LEFT);
             }
 
-            frontLayout = new StaticLayout(this.text, frontTextPaint, this.maxTextWidth, alignment, 1, 0, false);
+            frontLayout = createTextLayout(frontTextPaint, alignment);
             backLayout = null;
             if (this.paintBack != null) {
-                backLayout = new StaticLayout(this.text, backTextPaint, this.maxTextWidth, alignment, 1, 0, false);
+                backLayout = createTextLayout(backTextPaint, alignment);
             }
 
             boxWidth = frontLayout.getWidth();
@@ -112,6 +114,21 @@ public class AndroidPointTextContainer extends PointTextContainer {
                 break;
             default:
                 break;
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private StaticLayout createTextLayout(TextPaint paint, Layout.Alignment alignment) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // API29+, A10+
+            return StaticLayout.Builder
+                    .obtain(this.text, 0, this.text.length(), paint, this.maxTextWidth)
+                    .setBreakStrategy(LineBreaker.BREAK_STRATEGY_HIGH_QUALITY)
+                    .setAlignment(alignment)
+                    .setIncludePad(false)
+                    .build();
+        } else {
+            return new StaticLayout(this.text, paint, this.maxTextWidth, alignment, 1, 0, false);
         }
     }
 

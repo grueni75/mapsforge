@@ -34,7 +34,7 @@ The mapsforge writer has not changed significantly from version 0.3 and files ge
 
 |**Option**|**Description**|**Valid Values**|**Default Value**|
 |----------|---------------|----------------|-----------------|
-|`tag-conf-file`|path to an XML file that customizes the definition which OSM-tags are recognized|path to an XML file, please read section 'Defining a Custom Tag Mapping via XML' carefully before using thsi parameter|(blank) internal default tag mapping is used|
+|`tag-conf-file`|path to an XML file that customizes the definition which OSM-tags are recognized|path to an XML file, please read section 'Defining a Custom Tag Mapping via XML' carefully before using this parameter|(blank) internal default tag mapping is used|
 |`polygon-clipping`|use polygon clipping to reduce map file size (minimal performance overhead)|true/false|true|
 |`way-clipping`|use way clipping to reduce map file size (minimal performance overhead)|true/false|true|
 |`label-position`|compute label/symbol position for polygons that cover multiple tiles|true/false|false|
@@ -64,7 +64,7 @@ zoom-interval-conf=5,0,7,10,8,11,12,12,13,14,14,21
 
 ## Plugin Installation
 
-- Download the release or snapshot writer plugin (**jar-with-dependencies**) from [Maven Central](https://search.maven.org/search?q=g:org.mapsforge) or [Sonatype OSS Repository Hosting](https://oss.sonatype.org/content/repositories/snapshots/org/mapsforge/) and read the Osmosis [documentation](http://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#Plugin_Tasks) for how to install a plugin.
+- Download the release or snapshot writer plugin (**jar-with-dependencies**) from [Maven Central](https://repo1.maven.org/maven2/org/mapsforge/) or [Sonatype OSS Repository Hosting](https://oss.sonatype.org/content/repositories/snapshots/org/mapsforge/) and read the Osmosis [documentation](http://wiki.openstreetmap.org/wiki/Osmosis/Detailed_Usage#Plugin_Tasks) for how to install a plugin.
 - You may want to increase the Java heap space that may be allocated for osmosis. You can do so by editing the script $OSMOSIS_HOME/bin/osmosis(.bat). Insert a line with 'JAVACMD_OPTIONS=-Xmx800m'. This sets the maximum available Java heap space to 800M. Of course you can set this parameter to a value which ever fits best for your purpose.
 - See http://wiki.openstreetmap.org/wiki/Osmosis/Installation for further information about Osmosis usage.
 

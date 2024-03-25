@@ -4,7 +4,6 @@ apply plugin: 'maven-publish'
 dependencies {
     compileOnly files("${System.env.ANDROID_HOME}/platforms/android-${androidCompileSdk()}/android.jar")
     api project(":mapsforge-poi")
-    api project(":sqlite-android")
 }
 
 publishing {
@@ -19,4 +18,8 @@ if (project.hasProperty("SONATYPE_USERNAME")) {
     afterEvaluate {
         project.apply from: "${rootProject.projectDir}/deploy.gradle"
     }
+}
+
+if (System.getenv('ANDROID_HOME') == null) {
+    throw new GradleException("Environment variable ANDROID_HOME needs to be set to SDK folder")
 }

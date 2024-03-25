@@ -11,6 +11,7 @@ dependencies {
 }
 
 android {
+    namespace 'org.mapsforge.samples.android'
     compileSdk androidCompileSdk()
 
     compileOptions {
@@ -34,16 +35,13 @@ android {
             resources.srcDirs = ['src']
             res.srcDirs = ['res']
             assets.srcDirs = ['assets']
-            file("${rootDir}/sqlite-android/natives").eachDir() { dir ->
-                jniLibs.srcDirs += "${dir.path}/lib"
-            }
         }
         androidTest {
             java.srcDirs = ['src/androidTest']
         }
     }
 
-    lintOptions {
+    lint {
         abortOnError false
     }
 }

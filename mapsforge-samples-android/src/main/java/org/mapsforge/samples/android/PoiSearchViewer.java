@@ -72,7 +72,7 @@ public class PoiSearchViewer extends DefaultTheme {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        persistenceManager = AndroidPoiPersistenceManagerFactory.getPoiPersistenceManager(new File(getExternalFilesDir(null), POI_FILE).getAbsolutePath());
+        persistenceManager = AndroidPoiPersistenceManagerFactory.getPoiPersistenceManager(new File(getExternalMediaDirs()[0], POI_FILE).getAbsolutePath());
     }
 
     @Override
@@ -98,7 +98,7 @@ public class PoiSearchViewer extends DefaultTheme {
                 PoiCategoryManager categoryManager = persistenceManager.getCategoryManager();
                 PoiCategoryFilter categoryFilter = new ExactMatchPoiCategoryFilter();
                 categoryFilter.addCategory(categoryManager.getPoiCategoryByTitle(category));
-                return persistenceManager.findInRect(params[0], categoryFilter, null, Integer.MAX_VALUE);
+                return persistenceManager.findInRect(params[0], categoryFilter, null, null, Integer.MAX_VALUE, true);
             } catch (Throwable t) {
                 Log.e(SamplesApplication.TAG, t.getMessage(), t);
             }
